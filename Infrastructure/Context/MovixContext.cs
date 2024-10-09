@@ -5,15 +5,14 @@ namespace Infrastructure.Context;
 
 public class MovixContext(DbContextOptions<MovixContext> options) : DbContext(options)
 {
-    public DbSet<Driver> Driver {get; set;}
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        base.OnConfiguring(optionsBuilder);
-    }
+    public DbSet<Driver> Drivers {get; set;}
+    public DbSet<Manager> Managers {get; set;}
+    public DbSet<Vehicle> Vehicles {get; set;}
+    public DbSet<Trip> Trips {get; set;}
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        base.OnModelCreating(modelBuilder);
-    }
+        EntitiesConfigurator.Configure(modelBuilder);
+        DataSeeder.Seed(modelBuilder);
+    }    
 }

@@ -1,7 +1,7 @@
 ﻿namespace Domain.Entities;
 
-public class Trip
+public class Trip : Base
 {
-    public Vehicle Vehicle {get;set;} = default!;
-    public Driver Driver {get; set;} = default!;
+    public required Vehicle Vehicle {get;set;} = default!;
+    public required Driver Driver {get; set;} = default!;
 }

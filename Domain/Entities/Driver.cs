@@ -1,7 +1,13 @@
-﻿namespace Domain.Entities;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Domain.Entities;
 
 public class Driver : AbstractUser
 {
-    public string DriverLicense {get;set;} = default!;
+    [StringLength(20)]
+    public required string DriverLicense {get;set;} = default!;
     public bool IsDriving {get;set;} = false;
+
+    public ICollection<Trip>? Trips {get;set;}
+
 }
